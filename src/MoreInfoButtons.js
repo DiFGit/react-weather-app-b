@@ -7,7 +7,8 @@ export default function MoreInfoButtons(props) {
       <ul className="weather-details">
         <li>
           Wind: <span className="wind-speed" />
-          <span className="wind-units" /> {props.weatherData.windSpeed}m/s
+          <span className="wind-units" /> {props.weatherData.windSpeed}
+          {props.windSpeedUnits}
         </li>
         <li>
           Humidity: <span className="humidity" />

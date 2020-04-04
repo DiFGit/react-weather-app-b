@@ -7,7 +7,54 @@ import "./App.css";
 export default function App() {
   const [city, setCity] = useState("Lisbon");
   const [weatherData, setWeatherData] = useState({ ready: false });
-  /* const [detailsDisplay, setDetailsDisplay] = useState(true); */
+  const [units, setUnits] = useState("metric");
+  const [fahrenheit, setFahrenheit] = useState(
+    "btn btn-lg units inactive fahrenheit"
+  );
+  const [celsius, setCelsius] = useState("btn btn-lg units active celsius");
+  const [windSpeedUnits, setWindSpeedUnits] = useState("m/s");
+  const [detailsClassName, setDetailsClassName] = useState(
+    "btn btn-light btn-sm details disabled"
+  );
+  const [forecastClassName, setForecastClassName] = useState(
+    "btn btn-light btn-sm forecast"
+  );
+  const [details, setDetails] = useState(true);
+  const [forecast, setForecast] = useState(false);
+
+  function displayForecast(event) {
+    event.preventDefault();
+    setForecastClassName("btn btn-light btn-sm details disabled");
+    setDetailsClassName("btn btn-light btn-sm forecast");
+    setForecast(true);
+    setDetails(false);
+  }
+
+  function displayDetails(event) {
+    event.preventDefault();
+    setForecastClassName("btn btn-light btn-sm forecast");
+    setDetailsClassName("btn btn-light btn-sm details disabled");
+    setForecast(false);
+    setDetails(true);
+  }
+
+  function displayImperialUnits(event) {
+    event.preventDefault();
+    setUnits("imperial");
+    setFahrenheit("btn btn-lg units active fahrenheit");
+    setCelsius("btn btn-lg units inactive celsius");
+    setWindSpeedUnits("mph");
+    getCityData();
+  }
+
+  function displayMetricUnits(event) {
+    event.preventDefault();
+    setUnits("metric");
+    setFahrenheit("btn btn-lg units inactive fahrenheit");
+    setCelsius("btn btn-lg units active celsius");
+    setWindSpeedUnits("m/s");
+    getCityData();
+  }
 
   function handleResponse(response) {
     setWeatherData({
@@ -22,15 +69,14 @@ export default function App() {
       city: response.data.name,
       time:
         response.data.dt * 1000 + response.data.timezone * 1000 - 3600 * 1000,
-      ready: true
+      ready: true,
     });
   }
-  console.log(weatherData);
 
   function getCityData() {
     const apiKey = "1c79a9c19394dbdbf78cd6d4344cc928";
     const apiUrl = `https://api.openweathermap.org/data/2.5/`;
-    let weatherApiUrl = `${apiUrl}weather?q=${city}&appid=${apiKey}&units=metric`;
+    let weatherApiUrl = `${apiUrl}weather?q=${city}&appid=${apiKey}&units=${units}`;
     axios.get(weatherApiUrl).then(handleResponse);
   }
 
@@ -42,14 +88,6 @@ export default function App() {
     event.preventDefault();
     getCityData();
   }
-
-  /*   function activateDetailsButton() {
-    setDetailsDisplay(true);
-  }
-
-  function activateForecastButton() {
-    setDetailsDisplay(false);
-  } */
 
   if (weatherData.ready) {
     return (
@@ -77,13 +115,18 @@ export default function App() {
                     </button>
                   </div>
                   <div className="col-3 temperature-units">
-                    <a href="/" className="btn btn-lg units active celsius">
+                    <a
+                      href="/"
+                      className={celsius}
+                      onClick={displayMetricUnits}
+                    >
                       C
                     </a>
                     |
                     <a
                       href="/"
-                      className="btn btn-lg units inactive fahrenheit"
+                      className={fahrenheit}
+                      onClick={displayImperialUnits}
                     >
                       F
                     </a>
@@ -91,7 +134,7 @@ export default function App() {
                 </form>
               </div>
             </div>
-            <MainData data={weatherData} />
+            <MainData data={weatherData} units={units} />
             <div className="row lower-end">
               <div className="col-6 city-image">
                 <img
@@ -104,21 +147,22 @@ export default function App() {
                 <div className="btn-group" role="group">
                   <input
                     type="button"
-                    className="btn btn-light btn-sm details"
+                    className={detailsClassName}
                     value=" Details "
-                    disable
-                    /* onClick={setDetailsDisplay(true)} */
+                    onClick={displayDetails}
                   />
                   <input
                     type="button"
-                    className="btn btn-light btn-sm forecast"
+                    className={forecastClassName}
                     value="Forecast"
-                    /* onClick={setDetailsDisplay(false)} */
+                    onClick={displayForecast}
                   />
                 </div>
                 <MoreInfoButtons
                   weatherData={weatherData}
-                  /* infoDisplayed={detailsDisplay} */
+                  windSpeedUnits={windSpeedUnits}
+                  details={details}
+                  forecast={forecast}
                 />
               </div>
             </div>
