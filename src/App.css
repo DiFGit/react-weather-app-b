@@ -1,0 +1,184 @@
+.App {
+  text-align: center;
+}
+
+body {
+  font-family: sans-serif;
+  text-shadow: 1px 1px 1px black;
+}
+
+div.card {
+  margin: 0 auto;
+  max-width: 350px;
+  height: 365px;
+}
+
+div.card {
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+img {
+  height: 185px;
+}
+
+small {
+  display: block;
+}
+
+form div.temperature-units {
+  padding: 0;
+  font-size: 24px;
+  position: relative;
+  left: 6px;
+  top: 1px;
+}
+
+ul.weather-details {
+  list-style: none;
+  font-size: small;
+  text-align: center;
+  padding: 0;
+  margin: 0 auto;
+}
+
+li {
+  line-height: 35px;
+}
+
+.row {
+  margin: 0;
+}
+.search-engine {
+  border-radius: 4px;
+  width: 175px;
+}
+
+.search-glass {
+  position: relative;
+  top: 1px;
+  border-width: 2px;
+  border-radius: 4px;
+  border-style: outset;
+  border-color: initial;
+  border-image: initial;
+}
+
+.local-icon {
+  font-size: x-large;
+  color: #ec6e4c;
+  margin-left: 2px;
+}
+
+.units {
+  padding: 0 5px;
+  font-size: 24px;
+}
+
+.active {
+  color: #ffffff;
+}
+
+.active:hover {
+  cursor: default;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.inactive {
+  color: #ec6e4c;
+}
+
+.inactive:hover {
+  color: #ec6e4c;
+}
+
+.left-data {
+  padding: 0 0 0 15px;
+}
+
+div.day-hour:first-letter {
+  text-transform: capitalize;
+}
+
+div.weather-description:first-letter {
+  text-transform: capitalize;
+}
+
+.weather-icon {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  bottom: 20px;
+  right: 12px;
+}
+
+.current-temperature-data {
+  /*   position: relative;
+  bottom: 4px;
+  left: 10px; */
+  text-align: center;
+}
+
+.current-temperature-element {
+  font-size: 44px;
+  position: relative;
+  bottom: 7px;
+}
+.temp-max-min {
+  position: relative;
+  bottom: 11px;
+  font-size: 16px;
+}
+
+div.lower-end {
+  height: 185px;
+}
+
+div.city-image {
+  position: relative;
+  bottom: 20px;
+}
+
+.choose-buttons {
+  position: relative;
+  bottom: 10px;
+  height: 30px;
+  padding-left: 7px;
+}
+.forecast {
+  color: orange;
+}
+
+.links {
+  position: relative;
+  bottom: 20px;
+}
+
+/* .github-link {
+  text-align: center;
+  position: relative;
+  right: 135px;
+  bottom: 18.5px;
+  text-shadow: none;
+} */
+
+.pexels-link {
+  text-shadow: none;
+  line-height: 20px;
+  font-size: 8px;
+  margin-left: 20px;
+}
+
+.pexels-link a {
+  color: black;
+  text-decoration-line: underline;
+}
+
+.forecast-icon {
+  height: 36px;
+  width: 36px;
+}
+
+.forecast {
+  text-align: center;
+}
