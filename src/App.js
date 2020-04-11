@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MainData from "./MainData";
 import MoreInfoButtons from "./MoreInfoButtons";
@@ -6,6 +6,7 @@ import "./App.css";
 
 export default function App() {
   const [city, setCity] = useState("Lisbon");
+  const [input, setInput] = useState("null");
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [units, setUnits] = useState("metric");
   const [fahrenheit, setFahrenheit] = useState(
@@ -44,7 +45,6 @@ export default function App() {
     setFahrenheit("btn btn-lg units active fahrenheit");
     setCelsius("btn btn-lg units inactive celsius");
     setWindSpeedUnits("mph");
-    getCityData();
   }
 
   function displayMetricUnits(event) {
@@ -53,7 +53,6 @@ export default function App() {
     setFahrenheit("btn btn-lg units inactive fahrenheit");
     setCelsius("btn btn-lg units active celsius");
     setWindSpeedUnits("m/s");
-    getCityData();
   }
 
   function handleResponse(response) {
@@ -73,20 +72,24 @@ export default function App() {
     });
   }
 
-  function getCityData() {
-    const apiKey = "1c79a9c19394dbdbf78cd6d4344cc928";
-    const apiUrl = `https://api.openweathermap.org/data/2.5/`;
-    let weatherApiUrl = `${apiUrl}weather?q=${city}&appid=${apiKey}&units=${units}`;
-    axios.get(weatherApiUrl).then(handleResponse);
-  }
+  useEffect(
+    function getCityData() {
+      const apiKey = "1c79a9c19394dbdbf78cd6d4344cc928";
+      const apiUrl = `https://api.openweathermap.org/data/2.5/`;
+      let weatherApiUrl = `${apiUrl}weather?q=${city}&appid=${apiKey}&units=${units}`;
+      axios.get(weatherApiUrl).then(handleResponse);
+    },
+    [city, units]
+  );
 
   function readInput(event) {
-    setCity(event.target.value);
+    event.preventDefault();
+    setInput(event.target.value);
   }
 
   function updateCity(event) {
     event.preventDefault();
-    getCityData();
+    setCity(input);
   }
 
   if (weatherData.ready) {
@@ -193,7 +196,6 @@ export default function App() {
       </div>
     );
   } else {
-    getCityData();
     return "Loading...";
   }
 }
