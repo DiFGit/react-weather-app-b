@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MainData from "./MainData";
-import MoreInfoButtons from "./MoreInfoButtons";
+import MoreInfo from "./MoreInfo";
 import "./App.css";
 
 export default function App() {
@@ -177,7 +177,7 @@ export default function App() {
                     onClick={displayForecast}
                   />
                 </div>
-                <MoreInfoButtons
+                <MoreInfo
                   weatherData={weatherData}
                   windSpeedUnits={windSpeedUnits}
                   details={details}

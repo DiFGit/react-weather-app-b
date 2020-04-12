@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function MoreInfoButtons(props) {
+export default function MoreInfo(props) {
   if (props.details) {
     return (
       <div classeName="moreInfo">
