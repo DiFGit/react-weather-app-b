@@ -163,6 +163,7 @@ export default function App() {
                   windSpeedUnits={windSpeedUnits}
                   details={details}
                   forecast={forecast}
+                  units={units}
                 />
               </div>
             </div>
