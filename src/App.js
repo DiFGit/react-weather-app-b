@@ -3,6 +3,7 @@ import axios from "axios";
 import MainData from "./MainData";
 import MoreInfo from "./MoreInfo";
 import "./App.css";
+import CityImage from "./CityImage";
 
 export default function App() {
   const [city, setCity] = useState("Lisbon");
@@ -20,7 +21,6 @@ export default function App() {
   const [forecastClassName, setForecastClassName] = useState(
     "btn btn-light btn-sm forecast"
   );
-  let [imageUrl, setImageUrl] = useState(null);
   const [details, setDetails] = useState(true);
   const [forecast, setForecast] = useState(false);
 
@@ -56,10 +56,6 @@ export default function App() {
     setWindSpeedUnits("m/s");
   }
 
-  function displayCityImage(response) {
-    setImageUrl(response.data.photos[3].src.portrait);
-  }
-
   function handleResponse(response) {
     setWeatherData({
       iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
@@ -86,17 +82,6 @@ export default function App() {
     },
     [city, units]
   );
-  console.log(weatherData);
-  useEffect(function getCityImage() {
-    axios({
-      method: "get",
-      url: `https://api.pexels.com/v1/search?query=${city}+query&per_page=15&page=1`,
-      headers: {
-        Authorization:
-          "563492ad6f91700001000001ea246cab4f4645409f66c0be39fbe2b1",
-      },
-    }).then(displayCityImage);
-  });
 
   function readInput(event) {
     event.preventDefault();
@@ -156,11 +141,7 @@ export default function App() {
             <MainData data={weatherData} units={units} />
             <div className="row lower-end">
               <div className="col-6 city-image">
-                <img
-                  alt=""
-                  src={imageUrl}
-                  className="city-image card border-light"
-                />
+                <CityImage city={city} />
               </div>
               <div className="col-6 choose-buttons">
                 <div className="btn-group" role="group">
