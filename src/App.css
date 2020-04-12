@@ -116,14 +116,14 @@ div.weather-description:first-letter {
 }
 
 .current-temperature-element {
-  font-size: 44px;
+  font-size: 42px;
   position: relative;
   bottom: 7px;
 }
 .temp-max-min {
   position: relative;
-  bottom: 11px;
-  font-size: 16px;
+  bottom: 13px;
+  font-size: 14px;
 }
 
 div.lower-end {

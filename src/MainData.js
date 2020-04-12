@@ -9,8 +9,12 @@ export default function MainData(props) {
           {" "}
           <DateAndTime data={props.data.time} />
         </div>
-        <h4 className="location">{props.data.city}</h4>
-        <div className="weather-description">{props.data.description}</div>
+        <h4 className="location">
+          <small>{props.data.city}</small>
+        </h4>
+        <div className="weather-description">
+          <small>{props.data.description}</small>
+        </div>
       </div>
       <div className="col-4 current-weather">
         <img alt="" src={props.data.iconUrl} className="weather-icon" />
