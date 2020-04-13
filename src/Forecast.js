@@ -5,9 +5,6 @@ import Loader from "react-loader-spinner";
 export default function Forecast(props) {
   let forecast = props.forecastData.data;
   let weather = props.weatherData;
-  console.log(props.weatherData.city);
-  console.log(props.units);
-  console.log(props.forecastData);
 
   let date = new Date(
     props.forecastData.date * 1000 + props.forecastData.timezone * 1000
