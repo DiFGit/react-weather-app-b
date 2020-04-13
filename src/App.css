@@ -150,13 +150,15 @@ div.city-image {
   bottom: 20px;
 }
 
-/* .github-link {
-  text-align: center;
+.github-link {
+  line-height: 20px;
+  font-size: 8px;
+  text-align: right;
+  margin-right: 20px;
   position: relative;
-  right: 135px;
-  bottom: 18.5px;
+  bottom: 20px;
   text-shadow: none;
-} */
+}
 
 .pexels-link {
   text-shadow: none;
@@ -165,8 +167,7 @@ div.city-image {
   margin-left: 20px;
 }
 
-.pexels-link a {
-  color: black;
+.links a {
   text-decoration-line: underline;
 }
 

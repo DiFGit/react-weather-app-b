@@ -168,7 +168,7 @@ export default function App() {
             </div>
             <div className="links">
               <small className="pexels-link">
-                Photo provided by
+                Photo provided by{" "}
                 <a
                   href="https://www.pexels.com/"
                   target="_blank"
@@ -177,16 +177,16 @@ export default function App() {
                   Pexels
                 </a>
               </small>
-              {/*             <small className="github-link">
-              <a
-                href="https://github.com/DiFGit/the-scientific-weather-app"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Open-source code
-              </a>
-              , by DiFGit
-            </small> */}
+              <small className="github-link">
+                <a
+                  href="https://github.com/DiFGit/react-weather-app-b"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open-source code
+                </a>{" "}
+                by Diana Ferreira
+              </small>
             </div>
           </div>
         </div>
