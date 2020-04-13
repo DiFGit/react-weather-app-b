@@ -3,6 +3,7 @@ import axios from "axios";
 
 export default function CityImage(props) {
   let [imageUrl, setImageUrl] = useState(null);
+  console.log(props.currentLocation);
 
   function handleErrors() {
     setImageUrl(
@@ -14,18 +15,33 @@ export default function CityImage(props) {
     setImageUrl(response.data.photos[3].src.portrait);
   }
 
-  useEffect(function getCityImage() {
-    axios({
-      method: "get",
-      url: `https://api.pexels.com/v1/search?query=${props.city}+query&per_page=15&page=1`,
-      headers: {
-        Authorization:
-          "563492ad6f91700001000001ea246cab4f4645409f66c0be39fbe2b1",
-      },
-    })
-      .then(displayCityImage)
-      .catch(handleErrors);
-  });
+  useEffect(
+    function getCityImage() {
+      axios({
+        method: "get",
+        url: `https://api.pexels.com/v1/search?query=${props.city}+query&per_page=15&page=1`,
+        headers: {
+          Authorization:
+            "563492ad6f91700001000001f466afaf7aa641ac972d98d7545e9bfa",
+        },
+      })
+        .then(displayCityImage)
+        .catch(handleErrors);
+    },
+    [props.city]
+  );
 
-  return <img alt="" src={imageUrl} className="city-image card border-light" />;
+  if (props.currentLocation) {
+    return (
+      <img
+        alt=""
+        src="https://images.pexels.com/photos/1078850/pexels-photo-1078850.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        className="city-image card border-light"
+      />
+    );
+  } else {
+    return (
+      <img alt="" src={imageUrl} className="city-image card border-light" />
+    );
+  }
 }

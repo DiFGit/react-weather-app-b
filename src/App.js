@@ -24,6 +24,7 @@ export default function App() {
   );
   const [details, setDetails] = useState(true);
   const [forecast, setForecast] = useState(false);
+  const [currentLocation, setCurrentLocation] = useState(false);
 
   function displayForecast(event) {
     event.preventDefault();
@@ -80,6 +81,7 @@ export default function App() {
       const apiUrl = `https://api.openweathermap.org/data/2.5/`;
       let weatherApiUrl = `${apiUrl}weather?q=${city}&appid=${apiKey}&units=${units}`;
       axios.get(weatherApiUrl).then(handleResponse);
+      setCurrentLocation(false);
     },
     [city, units]
   );
@@ -90,6 +92,7 @@ export default function App() {
     const apiUrl = `https://api.openweathermap.org/data/2.5/`;
     let weatherApiUrl = `${apiUrl}weather?${currentPosition}&appid=${apiKey}&units=metric`;
     axios.get(weatherApiUrl).then(handleResponse);
+    setCurrentLocation(true);
   }
 
   function readInput(event) {
@@ -157,7 +160,7 @@ export default function App() {
             <MainData data={weatherData} units={units} />
             <div className="row lower-end">
               <div className="col-6 city-image">
-                <CityImage city={city} />
+                <CityImage city={city} currentLocation={currentLocation} />
               </div>
               <div className="col-6 choose-buttons">
                 <div className="btn-group" role="group">
