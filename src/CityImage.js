@@ -4,6 +4,12 @@ import axios from "axios";
 export default function CityImage(props) {
   let [imageUrl, setImageUrl] = useState(null);
 
+  function handleErrors() {
+    setImageUrl(
+      "https://images.pexels.com/photos/1078850/pexels-photo-1078850.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    );
+  }
+
   function displayCityImage(response) {
     setImageUrl(response.data.photos[3].src.portrait);
   }
@@ -16,7 +22,9 @@ export default function CityImage(props) {
         Authorization:
           "563492ad6f91700001000001ea246cab4f4645409f66c0be39fbe2b1",
       },
-    }).then(displayCityImage);
+    })
+      .then(displayCityImage)
+      .catch(handleErrors);
   });
 
   return <img alt="" src={imageUrl} className="city-image card border-light" />;

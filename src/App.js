@@ -84,6 +84,14 @@ export default function App() {
     [city, units]
   );
 
+  function getLocalData(position) {
+    let currentPosition = `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
+    const apiKey = "1c79a9c19394dbdbf78cd6d4344cc928";
+    const apiUrl = `https://api.openweathermap.org/data/2.5/`;
+    let weatherApiUrl = `${apiUrl}weather?${currentPosition}&appid=${apiKey}&units=metric`;
+    axios.get(weatherApiUrl).then(handleResponse);
+  }
+
   function readInput(event) {
     event.preventDefault();
     setInput(event.target.value);
@@ -92,6 +100,10 @@ export default function App() {
   function updateCity(event) {
     event.preventDefault();
     setCity(input);
+  }
+
+  function getCurrentLocation() {
+    navigator.geolocation.getCurrentPosition(getLocalData);
   }
 
   if (weatherData.ready) {
@@ -115,7 +127,10 @@ export default function App() {
                     className="btn btn-sm search-glass"
                   />
                   <div className="icon local-icon">
-                    <button className="col-2 mr-3 btn btn-sm current-location">
+                    <button
+                      className="col-2 mr-3 btn btn-sm current-location"
+                      onClick={getCurrentLocation}
+                    >
                       <i className="fas fa-map-marker-alt local-icon" />
                     </button>
                   </div>
@@ -155,7 +170,7 @@ export default function App() {
                   <input
                     type="button"
                     className={forecastClassName}
-                    value="Forecast"
+                    value=" Forecast "
                     onClick={displayForecast}
                   />
                 </div>
