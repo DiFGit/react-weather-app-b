@@ -24,7 +24,7 @@ export default function MoreInfo(props) {
       axios.get(apiForecastUrl).then(handleForecastResponse);
       console.log(apiForecastUrl);
     },
-    [props.city, props.units]
+    [data.city, props.units]
   );
 
   if (props.forecast && forecast.city === props.weatherData.city) {
