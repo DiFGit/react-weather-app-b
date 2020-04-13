@@ -1,60 +1,155 @@
 import React from "react";
+import ForecastDisplay from "./ForecastDisplay";
+import Loader from "react-loader-spinner";
 
 export default function Forecast(props) {
-  console.log(props.city);
+  let forecast = props.forecastData.data;
+  let weather = props.weatherData;
+  console.log(props.weatherData.city);
   console.log(props.units);
-  console.log(props.forecast);
-  /* 
-  let [forecast, setForecast] = useState(null);
+  console.log(props.forecastData);
 
-
-  function handleForecastResponse(response) {
-    setForecast({
-      data: response.data,
-      city: response.data.city.name,
-      date: response.data.list[0].dt,
-      timezone: response.data.city.timezone,
-      ready: true,
-    });
-    console.log(response.data);
-  }
-
-  function getForecastData() {
-    const apiKey = "1c79a9c19394dbdbf78cd6d4344cc928";
-    const apiUrl = `https://api.openweathermap.org/data/2.5/`;
-    let apiForecastUrl = `${apiUrl}forecast?q=${props.city}&appid=${apiKey}&units=${props.units}`;
-    axios.get(apiForecastUrl).then(handleForecastResponse);
-    console.log(apiForecastUrl);
-  }
-
-  if (forecast.ready && forecast.city === props.city) { */
-  return (
-    <div className="more-info">
-      <ul className="weather-details">
-        <li>
-          <span className="forecast-weekday">{props.forecast.timezone}</span>{" "}
-          <span className="forecast-icon">icon</span>{" "}
-          <span className="forecast-temp">14º/12º</span>
-        </li>
-        <li>
-          <span className="forecast-weekday">Wednesday</span>{" "}
-          <span className="forecast-icon">icon</span>{" "}
-          <span className="forecast-temp">14º/12º</span>
-        </li>
-        <li>
-          <span className="forecast-weekday">Thursday</span>{" "}
-          <span className="forecast-icon">icon</span>{" "}
-          <span className="forecast-temp">14º/12º</span>
-        </li>
-        <li>
-          <span className="forecast-weekday">Friday</span>{" "}
-          <span className="forecast-icon">icon</span>{" "}
-          <span className="forecast-temp">14º/12º</span>
-        </li>
-      </ul>
-    </div>
+  let date = new Date(
+    props.forecastData.date * 1000 + props.forecastData.timezone * 1000
   );
-  /*   } else {
-    getForecastData();
-  } */
+  let hour = date.getHours();
+
+  if (hour === 21) {
+    let day1 = forecast.list.slice(1, 8);
+    let day2 = forecast.list.slice(9, 16);
+    let day3 = forecast.list.slice(17, 24);
+    let day4 = forecast.list.slice(25, 32);
+    let fourDayForecast = [day1, day2, day3, day4];
+    return (
+      <ForecastDisplay
+        fourDayForecast={fourDayForecast}
+        data={forecast}
+        units={props.units}
+      />
+    );
+  }
+  if (0 <= hour < 3) {
+    let day1 = forecast.list.slice(8, 15);
+    let day2 = forecast.list.slice(16, 23);
+    let day3 = forecast.list.slice(24, 31);
+    let day4 = forecast.list.slice(32, 39);
+    let fourDayForecast = [day1, day2, day3, day4];
+    return (
+      <ForecastDisplay
+        fourDayForecast={fourDayForecast}
+        data={forecast}
+        units={props.units}
+      />
+    );
+  }
+  if (3 <= hour < 6) {
+    let day1 = forecast.list.slice(7, 14);
+    let day2 = forecast.list.slice(15, 22);
+    let day3 = forecast.list.slice(23, 30);
+    let day4 = forecast.list.slice(31, 38);
+    let fourDayForecast = [day1, day2, day3, day4];
+    return (
+      <ForecastDisplay
+        fourDayForecast={fourDayForecast}
+        data={forecast}
+        units={props.units}
+      />
+    );
+  }
+  if (6 <= hour < 9) {
+    let day1 = forecast.list.slice(6, 13);
+    let day2 = forecast.list.slice(14, 21);
+    let day3 = forecast.list.slice(22, 29);
+    let day4 = forecast.list.slice(30, 37);
+    let fourDayForecast = [day1, day2, day3, day4];
+    return (
+      <ForecastDisplay
+        fourDayForecast={fourDayForecast}
+        data={forecast}
+        units={props.units}
+      />
+    );
+  }
+  if (9 <= hour < 12) {
+    let day1 = forecast.list.slice(5, 12);
+    let day2 = forecast.list.slice(13, 20);
+    let day3 = forecast.list.slice(21, 28);
+    let day4 = forecast.list.slice(29, 36);
+    let fourDayForecast = [day1, day2, day3, day4];
+    return (
+      <ForecastDisplay
+        fourDayForecast={fourDayForecast}
+        data={forecast}
+        units={props.units}
+      />
+    );
+  }
+  if (12 <= hour < 15) {
+    let day1 = forecast.list.slice(4, 11);
+    let day2 = forecast.list.slice(12, 19);
+    let day3 = forecast.list.slice(20, 27);
+    let day4 = forecast.list.slice(28, 35);
+    let fourDayForecast = [day1, day2, day3, day4];
+    return (
+      <ForecastDisplay
+        fourDayForecast={fourDayForecast}
+        data={forecast}
+        units={props.units}
+      />
+    );
+  }
+  if (15 <= hour < 18) {
+    let day1 = forecast.list.slice(3, 10);
+    let day2 = forecast.list.slice(11, 18);
+    let day3 = forecast.list.slice(19, 26);
+    let day4 = forecast.list.slice(27, 34);
+    let fourDayForecast = [day1, day2, day3, day4];
+    return (
+      <ForecastDisplay
+        fourDayForecast={fourDayForecast}
+        data={forecast}
+        units={props.units}
+      />
+    );
+  }
+  if (18 <= hour < 21) {
+    let day1 = forecast.list.slice(2, 9);
+    let day2 = forecast.list.slice(10, 16);
+    let day3 = forecast.list.slice(18, 25);
+    let day4 = forecast.list.slice(26, 35);
+    let fourDayForecast = [day1, day2, day3, day4];
+    return (
+      <ForecastDisplay
+        fourDayForecast={fourDayForecast}
+        data={forecast}
+        units={props.units}
+      />
+    );
+  }
+
+  if (21 <= hour < 24) {
+    let day1 = forecast.list.slice(1, 8);
+    let day2 = forecast.list.slice(9, 15);
+    let day3 = forecast.list.slice(17, 24);
+    let day4 = forecast.list.slice(25, 34);
+    let fourDayForecast = [day1, day2, day3, day4];
+    return (
+      <ForecastDisplay
+        fourDayForecast={fourDayForecast}
+        data={forecast}
+        units={props.units}
+      />
+    );
+  } else {
+    return (
+      <Loader
+        type="TailSpin"
+        color="#00BFFF"
+        height={80}
+        width={80}
+        timeout={3000} //3 secs
+        className="loader"
+      />
+    );
+  }
 }

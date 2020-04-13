@@ -4,10 +4,10 @@ import axios from "axios";
 
 export default function MoreInfo(props) {
   const data = props.weatherData;
-  let [forecast, setForecast] = useState({ ready: false });
+  let [forecastData, setForecastData] = useState({ ready: false });
 
   function handleForecastResponse(response) {
-    setForecast({
+    setForecastData({
       data: response.data,
       city: response.data.city.name,
       date: response.data.list[0].dt,
@@ -15,7 +15,7 @@ export default function MoreInfo(props) {
       ready: true,
     });
   }
-  console.log(forecast);
+  console.log(forecastData);
   useEffect(
     function getForecastData() {
       const apiKey = "1c79a9c19394dbdbf78cd6d4344cc928";
@@ -27,9 +27,13 @@ export default function MoreInfo(props) {
     [data.city, props.units]
   );
 
-  if (props.forecast && forecast.city === props.weatherData.city) {
+  if (props.forecast && forecastData.city === data.city) {
     return (
-      <Forecast forecast={forecast} city={data.city} units={props.units} />
+      <Forecast
+        forecastData={forecastData}
+        weatherData={data}
+        units={props.units}
+      />
     );
   } else {
     return (
