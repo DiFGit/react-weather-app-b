@@ -172,10 +172,21 @@ div.city-image {
 }
 
 .forecast-icon {
-  height: 36px;
-  width: 36px;
+  height: 35px;
+  width: 35px;
 }
 
-.forecast {
+.forecast-display {
+  padding: 0;
   text-align: center;
+}
+
+div.col {
+  padding: 0;
+  text-align: justify;
+}
+
+div.col small {
+  position: relative;
+  top: 10px;
 }

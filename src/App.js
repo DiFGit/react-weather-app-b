@@ -4,6 +4,7 @@ import MainData from "./MainData";
 import MoreInfo from "./MoreInfo";
 import "./App.css";
 import CityImage from "./CityImage";
+import Loader from "react-loader-spinner";
 
 export default function App() {
   const [city, setCity] = useState("Lisbon");
@@ -163,6 +164,7 @@ export default function App() {
                   windSpeedUnits={windSpeedUnits}
                   details={details}
                   forecast={forecast}
+                  units={units}
                 />
               </div>
             </div>
@@ -193,6 +195,15 @@ export default function App() {
       </div>
     );
   } else {
-    return "Loading...";
+    return (
+      <Loader
+        type="TailSpin"
+        color="#00BFFF"
+        height={80}
+        width={80}
+        timeout={3000} //3 secs
+        className="loader"
+      />
+    );
   }
 }
