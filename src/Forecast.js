@@ -4,8 +4,6 @@ import Loader from "react-loader-spinner";
 
 export default function Forecast(props) {
   let forecast = props.forecastData.data;
-  let weather = props.weatherData;
-
   let date = new Date(
     props.forecastData.date * 1000 + props.forecastData.timezone * 1000
   );
@@ -25,7 +23,7 @@ export default function Forecast(props) {
       />
     );
   }
-  if (0 <= hour < 3) {
+  if ((hour) => 0 && hour < 3) {
     let day1 = forecast.list.slice(8, 15);
     let day2 = forecast.list.slice(16, 23);
     let day3 = forecast.list.slice(24, 31);
@@ -39,7 +37,7 @@ export default function Forecast(props) {
       />
     );
   }
-  if (3 <= hour < 6) {
+  if ((hour) => 3 && hour < 6) {
     let day1 = forecast.list.slice(7, 14);
     let day2 = forecast.list.slice(15, 22);
     let day3 = forecast.list.slice(23, 30);
@@ -53,7 +51,7 @@ export default function Forecast(props) {
       />
     );
   }
-  if (6 <= hour < 9) {
+  if ((hour) => 6 && hour < 9) {
     let day1 = forecast.list.slice(6, 13);
     let day2 = forecast.list.slice(14, 21);
     let day3 = forecast.list.slice(22, 29);
@@ -67,7 +65,7 @@ export default function Forecast(props) {
       />
     );
   }
-  if (9 <= hour < 12) {
+  if ((hour) => 9 && hour < 12) {
     let day1 = forecast.list.slice(5, 12);
     let day2 = forecast.list.slice(13, 20);
     let day3 = forecast.list.slice(21, 28);
@@ -81,7 +79,7 @@ export default function Forecast(props) {
       />
     );
   }
-  if (12 <= hour < 15) {
+  if ((hour) => 12 && hour < 15) {
     let day1 = forecast.list.slice(4, 11);
     let day2 = forecast.list.slice(12, 19);
     let day3 = forecast.list.slice(20, 27);
@@ -95,7 +93,7 @@ export default function Forecast(props) {
       />
     );
   }
-  if (15 <= hour < 18) {
+  if ((hour) => 15 && hour < 18) {
     let day1 = forecast.list.slice(3, 10);
     let day2 = forecast.list.slice(11, 18);
     let day3 = forecast.list.slice(19, 26);
@@ -109,7 +107,7 @@ export default function Forecast(props) {
       />
     );
   }
-  if (18 <= hour < 21) {
+  if ((hour) => 18 && hour < 21) {
     let day1 = forecast.list.slice(2, 9);
     let day2 = forecast.list.slice(10, 16);
     let day3 = forecast.list.slice(18, 25);
@@ -124,7 +122,7 @@ export default function Forecast(props) {
     );
   }
 
-  if (21 <= hour < 24) {
+  if ((hour) => 21 && hour < 24) {
     let day1 = forecast.list.slice(1, 8);
     let day2 = forecast.list.slice(9, 15);
     let day3 = forecast.list.slice(17, 24);
