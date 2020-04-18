@@ -3,7 +3,6 @@ import axios from "axios";
 
 export default function CityImage(props) {
   let [imageUrl, setImageUrl] = useState(null);
-  console.log(props.currentLocation);
 
   function handleErrors() {
     setImageUrl(

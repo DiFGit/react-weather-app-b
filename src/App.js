@@ -93,6 +93,7 @@ export default function App() {
     let weatherApiUrl = `${apiUrl}weather?${currentPosition}&appid=${apiKey}&units=metric`;
     axios.get(weatherApiUrl).then(handleResponse);
     setCurrentLocation(true);
+    setCity(null);
   }
 
   function readInput(event) {
